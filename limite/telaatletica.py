@@ -7,9 +7,10 @@ class TelaAtletica():
         print(" -------- ATLÉTICA ----------")
         print(" Escolha a opcao")
         print(" 1 - Incluir Atlética")
-        print(" 2 - Visualizar Atlética")
-        print(" 3 - Listar Atlética")
-        print(" 4 - Excluir Atlética")
+        print(" 2 - Excluir Atlética")
+        print(" 3 - Incluir aluno em Atlética")
+        print(" 4 - Excluir aluno de uma Atlética")
+        print(" 5 - Listar alunos de uma Atlética")
         print(" 0 - Retornar")
         opcao = int(input(" Escolha a opção: "))
         print("┗━━━━━━━━━━━━━━━━━┛")
@@ -37,5 +38,8 @@ class TelaAtletica():
         print("\n")
 
     def seleciona_atletica(self):
-        nome = input("Nome da atlética que deseja selecionar: ")
-        return nome
+        curso = input("Nome do curso da atlética: ")
+        return curso
+
+    def mostra_mensagem(self, msg):
+        print(msg)

@@ -7,9 +7,11 @@ class TelaCampeonato():
         print(" -------- CAMPEONATO ----------")
         print(" Escolha a opcao")
         print(" 1 - Incluir campeonato")
-        print(" 2 - Visualizar campeonato")
-        print(" 3 - Listar campeonato")
-        print(" 4 - Excluir campeonato")
+        print(" 2 - Excluir campeonato")
+        print(" 3 - Incluir partida")
+        print(" 4 - Excluir partida")
+        print(" 5 - Listar partidas")
+        print(" 6 - Ver podio")
         print(" 0 - Retornar")
         opcao = int(input(" Escolha a opção: "))
         print("┗━━━━━━━━━━━━━━━━━┛")
@@ -37,5 +39,5 @@ class TelaCampeonato():
         print("┗━━━━━━━━━━━━━━━━━┛")
         print("\n")
 
-    def mostrar_ranking_campeonato(self):
-        pass
+    def mostrar_ranking_campeonato(self, podio: list):
+        print(f"Primeiro: {podio[0]}, Segundo: {podio[1]} e Terceiro: {podio[2]}")

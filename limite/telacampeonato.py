@@ -41,3 +41,6 @@ class TelaCampeonato():
 
     def mostrar_ranking_campeonato(self, podio: list):
         print(f"Primeiro: {podio[0]}, Segundo: {podio[1]} e Terceiro: {podio[2]}")
+
+    def mostra_mensagem(self, msg):
+        print(msg)

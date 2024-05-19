@@ -21,10 +21,8 @@ class Atletica():
         return self.__alunos
 
     def adc_aluno(self, aluno):
-        # aluno do mesmo curso 
         if isinstance(aluno, Aluno):
             self.__alunos.append(aluno)
 
     def remove_aluno(self, aluno):
-        # verificar se esta na lista de alunos 
         self.__alunos.remove(aluno)

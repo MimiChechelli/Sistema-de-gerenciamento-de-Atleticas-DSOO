@@ -38,3 +38,6 @@ class TelaPartida():
         print(" Resultado: ", dados["resultado_atl_1"], " a ",dados["resultado_atl_2"])
         print("┗━━━━━━━━━━━━━━━━━┛")
         print("\n")
+
+    def mostra_mensagem(self, msg):
+        print(msg)

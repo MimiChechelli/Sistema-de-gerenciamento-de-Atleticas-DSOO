@@ -29,6 +29,7 @@ class TelaCampeonato():
     def mostrar_dados_campeonato(self, dados):
         print("┏━━━━━━━━━━━━━━━━━┓")
         print(" -------- DADOS CAMPEONATO ----------")
+        print(" Código: ", dados["codigo"])
         print(" Edição do campeonato: ", dados["edicao"])
         print(" Pontuações: ", end="")
         for atletica, pontuacao in dados["pontuacao"]:

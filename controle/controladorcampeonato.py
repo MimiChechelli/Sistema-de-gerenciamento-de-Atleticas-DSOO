@@ -1,11 +1,13 @@
 from entidade.campeonato import Campeonato
 from limite.telacampeonato import TelaCampeonato
+from controle.controladorpartida import ControladorPartida
 
 class ControladorCampeonato():
     def __init__(self, controlador_sistema):
         self.__controlador_sistema = controlador_sistema
         self.__tela_campeonato = TelaCampeonato()
         self.__campeonatos = []
+        self.__controlador_partida = ControladorPartida()
 
 
     def pega_campeonato_pela_edicao(self, edicao: int):
@@ -36,15 +38,26 @@ class ControladorCampeonato():
         dados_campeonato = self.__tela_campeonato.pegar_dados_campeonato()
         c = self.pega_campeonato_pela_edicao(dados_campeonato["edicao"])
         if c != None:
-            pass # chama o controlador da partida
+            self.__controlador_partida.listar_partida
+            codigo = input("insira o codigo da partida que deseja adicionar: ")
+            for partida in c.partidas:
+                if partida.codigo == codigo:
+                    self.__tela_campeonato.mostra_mensagem("ATENCAO: Partida já registrada") 
+            for partida in self.__controlador_partida.__partidas:
+                c.partidas.append(partida)
         else:
-            self.__tela_campeonato.mostra_mensagem("ATENCAO: Campeonato não existente") 
+            self.__tela_campeonato.mostra_mensagem("ATENCAO: Campeonato não existente")
 
     def excluir_partida(self):
         dados_campeonato = self.__tela_campeonato.pegar_dados_campeonato()
         c = self.pega_campeonato_pela_edicao(dados_campeonato["edicao"])
         if c != None:
-            for c.partidas # escolher partida p excluir
+            for partida in c.partidas:
+                self.__tela_campeonato.mostrar_dados_campeonato
+            codigo = input(" Insira o código da partida que deseja excluir: ")
+            for partida in c.partidas:
+                if partida.codigo == codigo:
+                    c.partidas.remove(partida)
         else:
             self.__tela_campeonato.mostra_mensagem("ATENCAO: Campeonato não existente") 
 
@@ -52,7 +65,7 @@ class ControladorCampeonato():
         dados_campeonato = self.__tela_campeonato.pegar_dados_campeonato()
         c = self.pega_campeonato_pela_edicao(dados_campeonato["edicao"])
         if c != None:
-            pass # chama o controlador da partida
+            self.__controlador_partida.listar_partida
         else:
             self.__tela_campeonato.mostra_mensagem("ATENCAO: Campeonato não existente") 
 

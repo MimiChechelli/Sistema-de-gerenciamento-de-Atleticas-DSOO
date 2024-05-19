@@ -2,7 +2,8 @@ from entidade.atletica import Atletica
 from entidade.arbitro import Arbitro
 
 class Partida():
-    def __init__(self, data_partida, atletica_1, atletica_2, arbitro, resultado_atl_1, resultado_atl_2):
+    def __init__(self, codigo,  data_partida, atletica_1, atletica_2, arbitro, resultado_atl_1, resultado_atl_2):
+        self.__codigo = codigo
         self.__data_partida = data_partida
         if(isinstance(atletica_1, Atletica)):
             self.__atletica_1 = atletica_1
@@ -12,6 +13,14 @@ class Partida():
             self.__arbitro = arbitro
         self.__resultado_atl_1 = resultado_atl_1
         self.__resultado_atl_2 = resultado_atl_2
+
+    @property
+    def codigo(self):
+        return self.__codigo
+
+    @codigo.setter
+    def codigo(self,codigo):
+        self.__codigo = codigo
 
     @property
     def data_partida(self):

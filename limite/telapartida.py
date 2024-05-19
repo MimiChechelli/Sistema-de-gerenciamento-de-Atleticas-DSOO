@@ -7,9 +7,9 @@ class TelaPartida():
         print(" -------- PARTIDA ----------")
         print(" Escolha a opcao")
         print(" 1 - Incluir partida")
-        print(" 2 - Visualizar partida")
-        print(" 3 - Listar atléticas participantes")
-        print(" 4 - Excluir partida")
+        print(" 2 - Alterar partida")
+        print(" 3 - Excluir partida")
+        print(" 4 - Listar partidas")
         print(" 0 - Retornar")
         opcao = int(input(" Escolha a opção: "))
         print("┗━━━━━━━━━━━━━━━━━┛")
@@ -19,6 +19,7 @@ class TelaPartida():
     def pegar_dados_partida(self):
         print("┏━━━━━━━━━━━━━━━━━┓")
         print(" -------- DADOS PARTIDA ----------")
+        codigo = input(" Insira o código da partida: ")
         data_partida = input(" Data da partida: ")
         atletica_1 = input(" Insira a primeira atlética: ")
         atletica_2 = input(" Insira a segunda atlética: ")
@@ -27,7 +28,7 @@ class TelaPartida():
         resultado_atl_2 = input(" Insira a pontuação da segunda atlética: ")
         print("┗━━━━━━━━━━━━━━━━━┛")
         print("\n")
-        return { "data_partida":{data_partida}, "atletica_1":{atletica_1}, "atletica_2":{atletica_2}, "arbitro":{arbitro}, "resultado_atl_1":{resultado_atl_1}, "resultado_atl_2":{resultado_atl_2}}
+        return { "codigo":{codigo},"data_partida":{data_partida}, "atletica_1":{atletica_1}, "atletica_2":{atletica_2}, "arbitro":{arbitro}, "resultado_atl_1":{resultado_atl_1}, "resultado_atl_2":{resultado_atl_2}}
 
     def mostrar_dados_partida(self, dados):
         print("┏━━━━━━━━━━━━━━━━━┓")

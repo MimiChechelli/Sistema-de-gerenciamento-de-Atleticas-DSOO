@@ -2,11 +2,17 @@ from entidade.atletica import Atletica
 from limite.telaatletica import TelaAtletica
 
 class ControladorAtletica():
-    def __init__(self, controlador_sistema, tela_atletica):
+    def __init__(self, controlador_sistema):
         self.__controlador_sistema = controlador_sistema
-        self.__tela_atletica = tela_atletica
+        self.__tela_atletica = TelaAtletica()
         self.__atleticas = []
 
+
+    def lista_atletica(self):
+        for a in self.__atleticas:
+            self.__tela_atletica.mostrar_dados_atletica({["nome"]: a.atletica.nome,
+                                                        ["curso"]: a.atletica.curso,
+                                                        ["alunos"]: a.atletica.alunos})
 
     def pega_atletica_pelo_curso(self, curso):
         for atletica in self.__atleticas:

@@ -1,19 +1,21 @@
-
-
+from entidade.campeonato import Campeonato
+from limite.telacampeonato import TelaCampeonato
 
 class ControladorCampeonato():
-    def __init__(self) -> None:
-        self.__campeonato = []
+    def __init__(self, controlador_sistema):
+        self.__controlador_sistema = controlador_sistema
+        self.__tela_campeonato = TelaCampeonato()
+        self.__campeonatos = []
 
 
-    def pega_campeonato_pela_edicao(self, codigo: int):
-        for livro in self.__livros:
-            if(livro.codigo == codigo):
-                return livro
+    def pega_campeonato_pela_edicao(self, edicao: int):
+        for campeonato in self.__campeonatos:
+            if(campeonato.edicao == edicao):
+                return campeonato
         return None
 
     def incluir_campeonato(self):
-        dados_livro = self.__tela_livro.pega_dados_livro()
+        dados_campeonato = self.__tela_campeonato.pega_dados_livro()
         l = self.pega_livro_por_codigo(dados_livro["codigo"])
         if l is None:
             livro = Livro(dados_livro["titulo"], dados_livro["codigo"])

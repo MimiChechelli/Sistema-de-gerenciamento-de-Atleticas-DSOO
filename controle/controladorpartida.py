@@ -1,9 +1,11 @@
-
-
+from entidade.partida import Partida
+from limite.telapartida import TelaPartida
 
 class ControladorPartida():
-    def __init__(self, controlador_sistema, tela_partida):
-        pass
+    def __init__(self, controlador_sistema):
+        self.__controlador_sistema = controlador_sistema
+        self.__tela_campeonato = TelaPartida()
+        self.__partidas = []
 
 
     def incluir_partida(self):

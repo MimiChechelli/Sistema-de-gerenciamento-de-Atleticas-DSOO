@@ -77,7 +77,7 @@ class ControladorCampeonato():
     def retornar(self):
         self.__controlador_sistema.abre_tela()
 
-    def tela_opcoes(self):
+    def abre_tela(self):
         lista_opcoes = {1: self.incluir_campeonato, 2: self.excluir_campeonato, 
                         3: self.incluir_partida, 4: self.excluir_partida,
                         5: self.listar_partida, 6: self.classificacao, 0: self.retornar}

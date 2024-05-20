@@ -20,7 +20,7 @@ class TelaCampeonato():
         print(" -------- DADOS CAMPEONATO ----------")
         edicao = input(" Edição do campeonato: ")
         print("\n")
-        return { "edicao":{edicao}}
+        return { "edicao":edicao}
 
     def mostrar_dados_campeonato(self, dados):
         print(" -------- DADOS CAMPEONATO ----------")

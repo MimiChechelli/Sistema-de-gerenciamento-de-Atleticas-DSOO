@@ -63,10 +63,10 @@ class ControladorPartida():
     def retornar(self):
         self.__controlador_sistema.abre_tela()
 
-    def tela_opcoes(self):
+    def abre_tela(self):
         lista_opcoes = {1: self.incluir_partida, 2: self.alterar_partida, 
                         3: self.excluir_partida, 4: self.listar_partida,
                         0: self.retornar}
         continua = True
         while continua:
-            lista_opcoes[self.__tela_campeonato.tela_opcoes()]()
+            lista_opcoes[self.__tela_partida.tela_opcoes()]()

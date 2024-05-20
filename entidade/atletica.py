@@ -21,8 +21,7 @@ class Atletica():
         return self.__alunos
 
     def adc_aluno(self, aluno):
-        if isinstance(aluno, str):
-            self.__alunos.append(aluno)
+        self.__alunos.append(aluno)
 
     def remove_aluno(self, aluno):
         self.__alunos.remove(aluno)

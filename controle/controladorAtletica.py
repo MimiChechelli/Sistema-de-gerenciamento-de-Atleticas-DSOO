@@ -1,10 +1,13 @@
 from entidade.atletica import Atletica
 from limite.telaatletica import TelaAtletica
+from limite.telaAluno import TelaAluno
+
 
 class ControladorAtletica():
     def __init__(self, controlador_sistema):
         self.__controlador_sistema = controlador_sistema
         self.__tela_atletica = TelaAtletica(self)
+        self.__tela_aluno = TelaAluno()
         self.__atleticas = []
 
 
@@ -37,11 +40,12 @@ class ControladorAtletica():
 
     def excluir_atletica(self):
         self.lista_atletica()
-        curso_atletica = self.__tela_livro.seleciona_atletica()
+        curso_atletica = self.__tela_atletica.seleciona_atletica()
         atletica = self.pega_atletica_pelo_curso(curso_atletica)
         if(atletica is not None):
             self.__atleticas.remove(atletica)
             self.lista_atletica()
+            self.__tela_atletica.mostra_mensagem("Atletica excluida")
         else:
             self.__tela_atletica.mostra_mensagem("ATENCAO: Atletica não existente")
 
@@ -51,7 +55,8 @@ class ControladorAtletica():
         curso_atletica = self.__tela_atletica.seleciona_atletica()
         atletica = self.pega_atletica_pelo_curso(curso_atletica)
         if(atletica is not None):
-            aluno = None # ver com o Gab
+            self.__controlador_sistema.controlador_aluno.listar_aluno()
+            aluno = self.__controlador_sistema.controlador_aluno.pega_aluno_por_cpf() # controlador n faz input tem q pedir tela
             atletica.adc_aluno(aluno)
         else:
             self.__tela_atletica.mostra_mensagem("ATENCAO: Atletica não existente")
@@ -59,11 +64,13 @@ class ControladorAtletica():
     def excluir_aluno_de_atletica(self):
         self.__tela_atletica.mostra_mensagem("Na atlética de qual curso deseja excluir? ")
         self.lista_atletica()
-        curso_atletica = self.__tela_livro.seleciona_atletica()
+        curso_atletica = self.__tela_aluno.seleciona_atletica()
         atletica = self.pega_atletica_pelo_curso(curso_atletica)
         if(atletica is not None):
-            aluno = None # ver com o Gab
-            atletica.remove_aluno(aluno)
+            self.__controlador_sistema.controlador_aluno.listar_aluno()
+            aluno = self.__controlador_sistema.controlador_aluno.pega_aluno_por_cpf() # controlador n faz input tem q pedir tela
+            if aluno in atletica.alunos:
+                atletica.remove_aluno(aluno)
         else:
             self.__tela_atletica.mostra_mensagem("ATENCAO: Atletica não existente")
 
@@ -74,7 +81,7 @@ class ControladorAtletica():
         atletica = self.pega_atletica_pelo_curso(curso_atletica)
         if(atletica is not None):
             for aluno in atletica.__alunos:
-                mostrar_dados_aluno(aluno) # Gab
+                self.__tela_aluno.mostrar_dados_aluno(aluno) # Gab
         else:
             self.__tela_atletica.mostra_mensagem("ATENCAO: Atletica não existente")
 

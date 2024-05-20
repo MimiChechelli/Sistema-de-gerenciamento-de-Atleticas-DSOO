@@ -58,7 +58,8 @@ class ControladorSistema():
 
     def abre_tela(self):
         lista_opcoes = {1: self.cadastra_aluno, 2: self.cadastra_arbitro,
-                        3: self.cadastra_atletica, 4: self.cadastra_partida, 5: self.cadastra_campeonato}
+                        3: self.cadastra_atletica, 4: self.cadastra_partida, 5: self.cadastra_campeonato,
+                        0: exit}
 
         while True:
             lista_opcoes[self.__tela_sistema.tela_opcoes()]()

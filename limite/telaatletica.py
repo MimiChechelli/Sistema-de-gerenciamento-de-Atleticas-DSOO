@@ -1,4 +1,4 @@
-from controle.controladorAtletica import ControladorAtletica
+
 
 
 class TelaAtletica():
@@ -31,8 +31,9 @@ class TelaAtletica():
         print(" Nome da Atlética: ", dados["nome"])
         print(" Nome do Curso: ", dados["curso"])
         print(" Participantes: ", end="")
+        print("Nome: ",end="")
         for elemento in dados["alunos"]:
-            print(elemento, end=", ")
+            print(elemento.nome, end=", ")
         print("\n")
 
     def seleciona_atletica(self):

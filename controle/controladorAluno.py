@@ -8,11 +8,11 @@ class ControladorAluno():
         self.__tela_aluno = TelaAluno()
         self.__lista_alunos = []
 
-    def pega_aluno_por_cpf(self, cpf: int):
-        if isinstance(cpf, int):
-            for aluno in self.__lista_alunos:
-                if aluno.cpf == cpf:
-                    return aluno
+    def pega_aluno_por_cpf(self):
+        cpf = self.__tela_aluno.pegar_dados_por_cpf()
+        for aluno in self.__lista_alunos:
+            if aluno.cpf == cpf:
+                return aluno
         else:
             self.__tela_aluno.mostrar_mensagem("Aluno não encontrado")
 
@@ -22,8 +22,7 @@ class ControladorAluno():
             dados_aluno["nome"],
             dados_aluno["cpf"],
             dados_aluno["data_nascimento"],
-            dados_aluno["gols"],
-            dados_aluno["atletica"])
+            dados_aluno["gols"])
         self.__lista_alunos.append(novo_aluno)
 
     def exclui_aluno(self):
@@ -53,8 +52,7 @@ class ControladorAluno():
                 "nome": aluno.nome,
                 "cpf": aluno.cpf,
                 "data_nascimento": aluno.data_nascimento,
-                "gols": aluno.gols,
-                "atletica": aluno.atletica})
+                "gols": aluno.gols})
 
     def inicializa_sistema(self):
         self.abre_tela()

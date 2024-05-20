@@ -12,8 +12,8 @@ class TelaArbitro():
         print("3 - Alterar arbitro")
         print("4 - Listar arbitros")
         print("0 - Retornar ao menu")
-
         opcao = int(input("Escolha a opcao: "))
+        print("\n")
         return opcao
 
     def pegar_dados_arbitro(self):
@@ -24,8 +24,10 @@ class TelaArbitro():
         data_nascimento = datetime.strptime(data_nascimento, "%Y-%m-%d").date()
         numero_partidas = int(input("Quantidade de partidas: "))
         if isinstance(nome, str) and isinstance(cpf, int) and isinstance(numero_partidas, int) and isinstance(data_nascimento, date):
+            print("\n")
             return {"nome": nome, "cpf": cpf, "data_nascimento": data_nascimento, "numero_partidas": numero_partidas}
         print("Algum dos dados foi inserido de forma errada, favor repetir")
+        print("\n")
 
     def mostrar_dados_arbitro(self, dados_arbitro):
         print("Nome: ", dados_arbitro["nome"])
@@ -40,6 +42,7 @@ class TelaArbitro():
             return cpf
         else:
             print("Não foi possível encontrar esse CPF")
+            print("\n")
 
     def mostrar_mensagem(self, mensagem: str):
         print(mensagem)

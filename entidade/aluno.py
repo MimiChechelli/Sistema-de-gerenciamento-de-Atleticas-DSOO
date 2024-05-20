@@ -4,14 +4,12 @@ from datetime import date
 
 
 class Aluno(Pessoa):
-    def __init__(self, nome: str, cpf: int, data_nascimento: date, gols: int, atletica: str):
+    def __init__(self, nome: str, cpf: int, data_nascimento: date, gols: int):
         super().__init__(nome, cpf, data_nascimento)
         self.__gols = 0
         self.__atletica = None
         if isinstance(gols, int):
             self.__gols = gols
-        if isinstance(atletica, str):
-            self.__atletica = atletica
 
     @property
     def nome(self):

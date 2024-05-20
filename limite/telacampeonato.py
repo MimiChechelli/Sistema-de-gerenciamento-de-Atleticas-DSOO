@@ -38,7 +38,7 @@ class TelaCampeonato():
         print(" Edição do campeonato: ", dados["edicao"])
         print(" Pontuações: ", end="")
         for atletica, pontuacao in dados["pontuacao"]:
-            print(f"Atlética: {atletica}, pontuação: {pontuacao}", end=", ")
+            print(f"Atlética: atletica, pontuação: pontuacao", end=", ")
         print(" Partidas: ", end="")
         for elemento in dados["partidas"]:
             print(elemento, end=", ")

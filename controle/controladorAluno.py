@@ -11,7 +11,7 @@ class ControladorAluno():
     def pega_aluno_por_cpf(self):
         cpf = self.__tela_aluno.pegar_dados_por_cpf()
         for aluno in self.__lista_alunos:
-            if aluno.cpf == cpf:
+            if (aluno is not None) and aluno.cpf == cpf:
                 return aluno
         else:
             self.__tela_aluno.mostrar_mensagem("Aluno não encontrado")
@@ -34,8 +34,7 @@ class ControladorAluno():
         self.__tela_aluno.mostrar_mensagem("Usuário não encontrado")
 
     def alterar_aluno(self):
-        cpf = self.__tela_aluno.pegar_dados_por_cpf()
-        aluno = self.pega_aluno_por_cpf(cpf)
+        aluno = self.pega_aluno_por_cpf()
 
         if aluno is not None:
             novos_dados = self.__tela_aluno.pegar_dados_aluno()

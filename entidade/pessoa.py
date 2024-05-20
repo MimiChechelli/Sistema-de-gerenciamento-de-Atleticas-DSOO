@@ -1,4 +1,4 @@
-from abstractPessoa import AbstractPessoa
+from entidade.abstractPessoa import AbstractPessoa
 from datetime import date
 
 

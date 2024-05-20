@@ -3,7 +3,6 @@
 
 class TelaCampeonato():
     def tela_opcoes(self):
-        print("┏━━━━━━━━━━━━━━━━━┓")
         print(" -------- CAMPEONATO ----------")
         print(" Escolha a opcao")
         print(" 1 - Incluir campeonato")
@@ -14,20 +13,16 @@ class TelaCampeonato():
         print(" 6 - Ver podio")
         print(" 0 - Retornar")
         opcao = int(input(" Escolha a opção: "))
-        print("┗━━━━━━━━━━━━━━━━━┛")
         print("\n")
         return opcao
 
     def pegar_dados_campeonato(self):
-        print("┏━━━━━━━━━━━━━━━━━┓")
         print(" -------- DADOS CAMPEONATO ----------")
         edicao = input(" Edição do campeonato: ")
-        print("┗━━━━━━━━━━━━━━━━━┛")
         print("\n")
         return { "edicao":{edicao}}
 
     def mostrar_dados_campeonato(self, dados):
-        print("┏━━━━━━━━━━━━━━━━━┓")
         print(" -------- DADOS CAMPEONATO ----------")
         print(" Código: ", dados["codigo"])
         print(" Edição do campeonato: ", dados["edicao"])
@@ -37,7 +32,6 @@ class TelaCampeonato():
         print(" Partidas: ", end="")
         for elemento in dados["partidas"]:
             print(elemento, end=", ")
-        print("┗━━━━━━━━━━━━━━━━━┛")
         print("\n")
 
     def mostrar_ranking_campeonato(self, podio: list):

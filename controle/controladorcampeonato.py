@@ -1,13 +1,13 @@
 from entidade.campeonato import Campeonato
 from limite.telacampeonato import TelaCampeonato
-from controle.controladorpartida import ControladorPartida
+from controle.controladorPartida import ControladorPartida
 
 class ControladorCampeonato():
     def __init__(self, controlador_sistema):
         self.__controlador_sistema = controlador_sistema
         self.__tela_campeonato = TelaCampeonato()
         self.__campeonatos = []
-        self.__controlador_partida = ControladorPartida()
+        self.__controlador_partida = ControladorPartida(self)
 
 
     def pega_campeonato_pela_edicao(self, edicao: int):
@@ -42,9 +42,9 @@ class ControladorCampeonato():
             codigo = input("insira o codigo da partida que deseja adicionar: ")
             for partida in c.partidas:
                 if partida.codigo == codigo:
-                    self.__tela_campeonato.mostra_mensagem("ATENCAO: Partida já registrada") 
-            for partida in self.__controlador_partida.__partidas:
-                c.partidas.append(partida)
+                    return self.__tela_campeonato.mostra_mensagem("ATENCAO: Partida já registrada")
+            c.partidas.append(partida)
+            self.__tela_campeonato.mostra_mensagem("Partida registrada!")
         else:
             self.__tela_campeonato.mostra_mensagem("ATENCAO: Campeonato não existente")
 

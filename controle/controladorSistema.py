@@ -53,6 +53,9 @@ class ControladorSistema():
     def encerra_sistema(self):
         exit()
 
+    def inicializa_sistema(self):
+        self.abre_tela()
+
     def abre_tela(self):
         lista_opcoes = {1: self.cadastra_aluno, 2: self.cadastra_arbitro,
                         3: self.cadastra_atletica, 4: self.cadastra_partida, 5: self.cadastra_campeonato}

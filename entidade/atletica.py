@@ -1,4 +1,4 @@
-from entidade.aluno import Aluno
+
 
 
 class Atletica():
@@ -21,7 +21,7 @@ class Atletica():
         return self.__alunos
 
     def adc_aluno(self, aluno):
-        if isinstance(aluno, Aluno):
+        if isinstance(aluno, str):
             self.__alunos.append(aluno)
 
     def remove_aluno(self, aluno):

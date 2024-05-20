@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime
 
 
 class TelaArbitro():
@@ -20,8 +20,9 @@ class TelaArbitro():
         print("*** DADOS DO ARBITRO ***")
         nome = input("Nome: ")
         cpf = int(input("CPF (somente números): "))
-        data_nascimento = date(input("Data de nascimento (YYYY,MM,DD): "))
-        numero_partidas = input("Quantidade de partidas: ")
+        data_nascimento = input("Data de nascimento (YYYY,MM,DD): ")
+        data_nascimento = datetime.strptime(data_nascimento, "%Y-%m-%d").date()
+        numero_partidas = int(input("Quantidade de partidas: "))
         if isinstance(nome, str) and isinstance(cpf, int) and isinstance(numero_partidas, int) and isinstance(data_nascimento, date):
             return {"nome": nome, "cpf": cpf, "data_nascimento": data_nascimento, "numero_partidas": numero_partidas}
         print("Algum dos dados foi inserido de forma errada, favor repetir")
@@ -34,7 +35,7 @@ class TelaArbitro():
         print("\n")
 
     def pegar_dados_por_cpf(self):
-        cpf = input("Digite o CPF do arbitro que deseja selecionar: ")
+        cpf = int(input("Digite o CPF do arbitro que deseja selecionar: "))
         if isinstance(cpf, int):
             return cpf
         else:

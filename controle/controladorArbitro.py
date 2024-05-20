@@ -2,8 +2,9 @@ from entidade.arbitro import Arbitro
 from limite.telaArbitro import TelaArbitro
 
 
-class ControladorAluno():
-    def __init__(self):
+class ControladorArbitro():
+    def __init__(self, controlador_sistema):
+        self.__controlador_sistema = controlador_sistema
         self.__tela_arbitro = TelaArbitro()
         self.__lista_arbitros = []
 
@@ -13,7 +14,7 @@ class ControladorAluno():
                 if arbitro.cpf == cpf:
                     return arbitro
         else:
-            self.__tela_arbitro.mostrar_mensagem("Aluno não encontrado")
+            self.__tela_arbitro.mostrar_mensagem("Arbitro não encontrado")
 
     def adiciona_arbitro(self):
         dados_arbitro = self.__tela_arbitro.pegar_dados_arbitro()
@@ -24,18 +25,20 @@ class ControladorAluno():
             dados_arbitro["numero_partidas"])
         self.__lista_arbitros.append(novo_arbitro)
 
-    def exclui_arbitro(self, cpf):
+    def exclui_arbitro(self):
+        cpf = self.__tela_arbitro.pegar_dados_por_cpf()
         for arbitro in self.__lista_arbitros:
             if arbitro.cpf == cpf:
-                self.__lista_arbitros.remove(arbitro)
-        self.__tela_arbitro.mostrar_mensagem("Usuário não encontrado")
+                print("Arbitro excluido")
+                return self.__lista_arbitros.remove(arbitro)
+        self.__tela_arbitro.mostrar_mensagem("Arbitro não encontrado")
 
     def alterar_arbitro(self):
         cpf = self.__tela_arbitro.pegar_dados_por_cpf()
         arbitro = self.pega_arbitro_por_cpf(cpf)
 
         if arbitro is not None:
-            novos_dados = self.__tela_amigo.pegar_dados_arbitro()
+            novos_dados = self.__tela_arbitro.pegar_dados_arbitro()
             arbitro.nome = novos_dados["nome"]
             arbitro.cpf = novos_dados["cpf"]
             arbitro.data_nascimento = novos_dados["data_nascimento"]
@@ -55,7 +58,7 @@ class ControladorAluno():
         self.abre_tela()
 
     def retornar(self):
-        exit()
+        self.__controlador_sistema.abre_tela()
 
     def abre_tela(self):
         lista_opcoes = {1: self.adiciona_arbitro, 2: self.exclui_arbitro,

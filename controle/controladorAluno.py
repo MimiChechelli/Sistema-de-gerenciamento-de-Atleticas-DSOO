@@ -3,7 +3,8 @@ from limite.telaAluno import TelaAluno
 
 
 class ControladorAluno():
-    def __init__(self):
+    def __init__(self, controlador_sistema):
+        self.__controlador_sistema = controlador_sistema
         self.__tela_aluno = TelaAluno()
         self.__lista_alunos = []
 
@@ -25,10 +26,12 @@ class ControladorAluno():
             dados_aluno["atletica"])
         self.__lista_alunos.append(novo_aluno)
 
-    def exclui_aluno(self, cpf):
+    def exclui_aluno(self):
+        cpf = self.__tela_aluno.pegar_dados_por_cpf()
         for aluno in self.__lista_alunos:
             if aluno.cpf == cpf:
-                self.__lista_alunos.remove(aluno)
+                print("Aluno excluido")
+                return self.__lista_alunos.remove(aluno)
         self.__tela_aluno.mostrar_mensagem("Usuário não encontrado")
 
     def alterar_aluno(self):
@@ -36,12 +39,11 @@ class ControladorAluno():
         aluno = self.pega_aluno_por_cpf(cpf)
 
         if aluno is not None:
-            novos_dados = self.__tela_amigo.pegar_dados_aluno()
+            novos_dados = self.__tela_aluno.pegar_dados_aluno()
             aluno.nome = novos_dados["nome"]
             aluno.cpf = novos_dados["cpf"]
             aluno.data_nascimento = novos_dados["data_nascimento"]
             aluno.gols = novos_dados["gols"]
-            aluno.atletica = novos_dados["atletica"]
         else:
             self.__tela_aluno.mostrar_mensagem("Aluno não existente")
 
@@ -58,7 +60,7 @@ class ControladorAluno():
         self.abre_tela()
 
     def retornar(self):
-        exit()
+        self.__controlador_sistema.abre_tela()
 
     def abre_tela(self):
         lista_opcoes = {1: self.adiciona_aluno, 2: self.exclui_aluno,

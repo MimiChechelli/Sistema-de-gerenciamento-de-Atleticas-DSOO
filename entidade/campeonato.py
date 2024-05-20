@@ -1,4 +1,3 @@
-from controle.controladorcampeonato import ControladorCampeonato
 from entidade.partida import Partida
 
 class Campeonato():

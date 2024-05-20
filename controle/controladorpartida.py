@@ -52,7 +52,7 @@ class ControladorPartida():
 
     def listar_partida(self):
         for p in self.__partidas:
-            self.__tela_partida.mostrar_dados_partida({["codigo"]: p.partida.codigo
+            self.__tela_partida.mostrar_dados_partida({["codigo"]: p.partida.codigo,
                                                         ["data_partida"]: p.partida.data_partida,
                                                         ["atletica_1"]: p.partida.atletica_1,
                                                         ["atletica_2"]: p.partida.atletica_2,

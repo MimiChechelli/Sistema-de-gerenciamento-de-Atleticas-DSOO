@@ -1,4 +1,4 @@
-from pessoa import Pessoa
+from entidade.pessoa import Pessoa
 from datetime import date
 
 
@@ -11,30 +11,30 @@ class Arbitro(Pessoa):
 
     @property
     def nome(self):
-        return self.__nome
+        return self._Pessoa__nome
 
     @nome.setter
     def nome(self, nome: str):
         if isinstance(nome, str):
-            self.__nome = nome
+            self._Pessoa__nome = nome
 
     @property
     def cpf(self):
-        return self.__cpf
+        return self._Pessoa__cpf
 
     @cpf.setter
     def cpf(self, cpf: int):
         if isinstance(cpf, int):
-            self.__cpf = cpf
+            self._Pessoa__cpf = cpf
 
     @property
     def data_nascimento(self):
-        return self.__data_nascimento
+        return self._Pessoa__data_nascimento
 
     @data_nascimento.setter
     def data_nascimento(self, data_nascimento: date):
         if isinstance(data_nascimento, date):
-            self.__data_nascimento = data_nascimento
+            self._Pessoa__data_nascimento = data_nascimento
 
     @property
     def numero_partidas(self):

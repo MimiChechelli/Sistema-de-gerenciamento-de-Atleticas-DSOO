@@ -14,20 +14,26 @@ class TelaPartida():
         print("\n")
         return opcao
 
+    def pegar_codigo_partida(self):
+        codigo = int(input(" Insira o código da partida: "))
+        print("\n")
+        return codigo
+
     def pegar_dados_partida(self):
         print(" -------- DADOS PARTIDA ----------")
-        codigo = input(" Insira o código da partida: ")
+        codigo = int(input(" Insira o código da partida: "))
         data_partida = input(" Data da partida: ")
         atletica_1 = input(" Insira a primeira atlética: ")
         atletica_2 = input(" Insira a segunda atlética: ")
         arbitro = input(" Insira o arbitro da partida: ")
-        resultado_atl_1 = input(" Insira a pontuação da primeira atlética: ")
-        resultado_atl_2 = input(" Insira a pontuação da segunda atlética: ")
+        resultado_atl_1 = int(input(" Insira a pontuação da primeira atlética: "))
+        resultado_atl_2 = int(input(" Insira a pontuação da segunda atlética: "))
         print("\n")
-        return { "codigo":{codigo},"data_partida":{data_partida}, "atletica_1":{atletica_1}, "atletica_2":{atletica_2}, "arbitro":{arbitro}, "resultado_atl_1":{resultado_atl_1}, "resultado_atl_2":{resultado_atl_2}}
+        return codigo, data_partida, atletica_1, atletica_2, arbitro, resultado_atl_1, resultado_atl_2
 
     def mostrar_dados_partida(self, dados):
         print(" -------- DADOS PARTIDA ----------")
+        print(" Código: ", dados["codigo"])
         print(" Data: ", dados["data_partida"])
         print(" Atlética: ", dados["atletica_1"]," VS ", dados["atletica_2"])
         print(" Arbitro: ", dados["arbitro"])

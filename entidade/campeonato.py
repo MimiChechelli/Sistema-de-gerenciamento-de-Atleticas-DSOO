@@ -8,6 +8,10 @@ class Campeonato():
 
 
     @property
+    def edicao(self):
+        return self.__edicao
+
+    @property
     def pontuacao(self):
         return self.__pontuacao
 

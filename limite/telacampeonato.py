@@ -18,9 +18,19 @@ class TelaCampeonato():
 
     def pegar_dados_campeonato(self):
         print(" -------- DADOS CAMPEONATO ----------")
-        edicao = input(" Edição do campeonato: ")
+        edicao = int(input(" Edição do campeonato: "))
         print("\n")
-        return { "edicao":edicao}
+        return edicao
+
+    def lista_edicoes(self, campeonatos):
+        for campeonato in campeonatos:
+            print(campeonato.edicao)
+
+
+    def pega_edicao(self):
+        edicao = int(input("Qual Edição? "))
+        print("\n")
+        return edicao
 
     def mostrar_dados_campeonato(self, dados):
         print(" -------- DADOS CAMPEONATO ----------")
@@ -35,7 +45,8 @@ class TelaCampeonato():
         print("\n")
 
     def mostrar_ranking_campeonato(self, podio: list):
-        print(f"Primeiro: {podio[0]}, Segundo: {podio[1]} e Terceiro: {podio[2]}")
+        print("Primeiro:", podio[0], "Segundo:", podio[1], "e Terceiro:", podio[2])
+        print("\n")
 
     def mostra_mensagem(self, msg):
         print(msg)

@@ -25,9 +25,9 @@ class TelaAluno():
         data_nascimento = datetime.strptime(data_nascimento, "%Y-%m-%d").date()
         gols = int(input("Quantidade de Gols: "))
         if isinstance(nome, str) and isinstance(cpf, int) and isinstance(gols, int) and isinstance(data_nascimento, date):
-            return {"nome": nome, "cpf": cpf, "data_nascimento": data_nascimento, "gols": gols}
             print("\n")
-        print("Algum dos dados foi inserido de forma errada, favor repetir")
+            return {"nome": nome, "cpf": cpf, "data_nascimento": data_nascimento, "gols": gols}
+        print("Algum dos dados foi inserido de forma errada")
         print("\n")
 
     def mostrar_dados_aluno(self, dados_aluno):

@@ -15,18 +15,10 @@ class ControladorCampeonato():
         return None
 
     def incluir_campeonato(self):
-<<<<<<< HEAD:controle/controladorcampeonato.py
         edicao = self.__tela_campeonato.pegar_dados_campeonato()
         c = self.pega_campeonato_pela_edicao(edicao)
         if c == None:
             campeonato = Campeonato(edicao)
-=======
-        dados_campeonato = self.__tela_campeonato.pegar_dados_campeonato()
-        c = dados_campeonato["edicao"]
-        print(dados_campeonato)
-        if c != None:
-            campeonato = Campeonato(dados_campeonato["edicao"])
->>>>>>> 786fb4228fecc90b5a193bb7c2a6ff896caa4e50:controle/controladorCampeonato.py
             self.__campeonatos.append(campeonato)
             self.__tela_campeonato.mostra_mensagem(f"Campeonato {self.__campeonatos[-1].edicao} cadastrado"
                                                     "\n")
@@ -35,13 +27,8 @@ class ControladorCampeonato():
                                                     "\n")
 
     def excluir_campeonato(self):
-<<<<<<< HEAD:controle/controladorcampeonato.py
         edicao = self.__tela_campeonato.pega_edicao()
         c = self.pega_campeonato_pela_edicao(edicao)
-=======
-        dados_campeonato = self.__tela_campeonato.pegar_dados_campeonato()
-        c = dados_campeonato["edicao"]
->>>>>>> 786fb4228fecc90b5a193bb7c2a6ff896caa4e50:controle/controladorCampeonato.py
         if c != None:
             self.__campeonatos.remove(c)
             self.__tela_campeonato.mostra_mensagem("Campeonato deletado"
@@ -51,14 +38,9 @@ class ControladorCampeonato():
                                                     "\n")
 
     def incluir_partida(self):
-<<<<<<< HEAD:controle/controladorcampeonato.py
         self.__tela_campeonato.lista_edicoes(self.__campeonatos)
         dados_campeonato = self.__tela_campeonato.pega_edicao()
         c = self.pega_campeonato_pela_edicao(dados_campeonato)
-=======
-        dados_campeonato = self.__tela_campeonato.pegar_dados_campeonato()
-        c = dados_campeonato["edicao"]
->>>>>>> 786fb4228fecc90b5a193bb7c2a6ff896caa4e50:controle/controladorCampeonato.py
         if c != None:
             self.__controlador_sistema.controlador_partida.listar_partida()
             codigo = int(input("insira o codigo da partida que deseja adicionar: "))
@@ -84,14 +66,9 @@ class ControladorCampeonato():
                                                     "\n")
 
     def excluir_partida(self):
-<<<<<<< HEAD:controle/controladorcampeonato.py
         self.__tela_campeonato.lista_edicoes(self.__campeonatos)
         edicao = self.__tela_campeonato.pega_edicao()
         c = self.pega_campeonato_pela_edicao(edicao)
-=======
-        dados_campeonato = self.__tela_campeonato.pegar_dados_campeonato()
-        c = dados_campeonato["edicao"]
->>>>>>> 786fb4228fecc90b5a193bb7c2a6ff896caa4e50:controle/controladorCampeonato.py
         if c != None:
             for partida in c.partidas:
                 self.__controlador_sistema.controlador_partida.mostra_partida(partida)
@@ -104,14 +81,9 @@ class ControladorCampeonato():
             self.__tela_campeonato.mostra_mensagem("ATENCAO: Campeonato não existente") 
 
     def listar_partida(self):
-<<<<<<< HEAD:controle/controladorcampeonato.py
         self.__tela_campeonato.lista_edicoes(self.__campeonatos)
         edicao = self.__tela_campeonato.pega_edicao()
         c = self.pega_campeonato_pela_edicao(edicao)
-=======
-        dados_campeonato = self.__tela_campeonato.pegar_dados_campeonato()
-        c = dados_campeonato["edicao"]
->>>>>>> 786fb4228fecc90b5a193bb7c2a6ff896caa4e50:controle/controladorCampeonato.py
         if c != None:
             for partida in c.partidas:
                 self.__controlador_sistema.controlador_partida.mostra_partida(partida)

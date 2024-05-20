@@ -18,7 +18,8 @@ class ControladorCampeonato():
 
     def incluir_campeonato(self):
         dados_campeonato = self.__tela_campeonato.pegar_dados_campeonato()
-        c = self.pega_campeonato_pela_edicao(dados_campeonato["edicao"])
+        c = dados_campeonato["edicao"]
+        print(dados_campeonato)
         if c != None:
             campeonato = Campeonato(dados_campeonato["edicao"])
             self.__campeonatos.append(campeonato)
@@ -27,7 +28,7 @@ class ControladorCampeonato():
 
     def excluir_campeonato(self):
         dados_campeonato = self.__tela_campeonato.pegar_dados_campeonato()
-        c = self.pega_campeonato_pela_edicao(dados_campeonato["edicao"])
+        c = dados_campeonato["edicao"]
         if c != None:
             campeonato = Campeonato(dados_campeonato["edicao"])
             self.__campeonatos.remove(campeonato)
@@ -36,7 +37,7 @@ class ControladorCampeonato():
 
     def incluir_partida(self):
         dados_campeonato = self.__tela_campeonato.pegar_dados_campeonato()
-        c = self.pega_campeonato_pela_edicao(dados_campeonato["edicao"])
+        c = dados_campeonato["edicao"]
         if c != None:
             self.__controlador_partida.listar_partida
             codigo = input("insira o codigo da partida que deseja adicionar: ")
@@ -50,7 +51,7 @@ class ControladorCampeonato():
 
     def excluir_partida(self):
         dados_campeonato = self.__tela_campeonato.pegar_dados_campeonato()
-        c = self.pega_campeonato_pela_edicao(dados_campeonato["edicao"])
+        c = dados_campeonato["edicao"]
         if c != None:
             for partida in c.partidas:
                 self.__tela_campeonato.mostrar_dados_campeonato
@@ -63,7 +64,7 @@ class ControladorCampeonato():
 
     def listar_partida(self):
         dados_campeonato = self.__tela_campeonato.pegar_dados_campeonato()
-        c = self.pega_campeonato_pela_edicao(dados_campeonato["edicao"])
+        c = dados_campeonato["edicao"]
         if c != None:
             self.__controlador_partida.listar_partida
         else:

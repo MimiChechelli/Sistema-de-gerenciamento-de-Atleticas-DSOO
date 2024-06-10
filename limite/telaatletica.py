@@ -1,9 +1,10 @@
-
+import PySimpleGUI as sg
 
 
 class TelaAtletica():
     def __init__(self, controlador_atletica):
         self.__controlador_atletica = controlador_atletica
+        self.__window = None
 
 
     def tela_opcoes(self):
@@ -20,11 +21,28 @@ class TelaAtletica():
         return opcao
 
     def pegar_dados_atletica(self):
-        print(" -------- DADOS ATLÉTICA ----------")
-        curso = input(" Nome do curso: ")
-        nome = input(" Nome da atlética: ")
-        print("\n")
-        return { "nome":nome, "curso":curso}
+        sg.ChangeLookAndFeel('DarkTeal4')
+        layout = [
+        [sg.Text('-------- DADOS ATLÉTICA ----------', font=("Helvica", 25))],
+        [sg.Text('Nome do curso:', size=(15, 1)), sg.InputText('', key='curso')],
+        [sg.Text('Nome da atlética:', size=(15, 1)), sg.InputText('', key='nome')],
+        [sg.Button('Confirmar'), sg.Cancel('Cancelar')]
+        ]
+        self.__window = sg.Window('Sistema de atlética').Layout(layout)
+
+        button, values = self.open()
+        curso = values['curso']
+        nome = values['nome']
+
+        self.close()
+        return {"curso": curso, "nome": nome}
+
+    def close(self):
+        self.__window.Close()
+
+    def open(self):
+        button, values = self.__window.Read()
+        return button, values
 
     def mostrar_dados_atletica(self, dados):
         print(" -------- DADOS ATLÉTICA ----------")
@@ -42,3 +60,4 @@ class TelaAtletica():
 
     def mostra_mensagem(self, msg):
         print(msg)
+

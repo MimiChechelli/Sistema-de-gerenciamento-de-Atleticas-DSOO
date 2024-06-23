@@ -1,7 +1,12 @@
-
+import PySimpleGUI as sg
 
 
 class TelaCampeonato():
+    def __init__(self, controlador_campeonato):
+        self.__controlador_campeonato= controlador_campeonato
+        self.__window = None
+
+
     def tela_opcoes(self):
         print(" -------- CAMPEONATO ----------")
         print(" Escolha a opcao")
@@ -50,3 +55,10 @@ class TelaCampeonato():
 
     def mostra_mensagem(self, msg):
         print(msg)
+
+    def close(self):
+        self.__window.Close()
+
+    def open(self):
+        button, values = self.__window.Read()
+        return button, values

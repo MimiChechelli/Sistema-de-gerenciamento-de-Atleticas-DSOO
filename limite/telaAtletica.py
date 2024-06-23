@@ -8,17 +8,21 @@ class TelaAtletica():
 
 
     def tela_opcoes(self):
-        print(" -------- ATLÉTICA ----------")
-        print(" Escolha a opcao")
-        print(" 1 - Incluir Atlética")
-        print(" 2 - Excluir Atlética")
-        print(" 3 - Incluir aluno em Atlética")
-        print(" 4 - Excluir aluno de uma Atlética")
-        print(" 5 - Listar alunos de uma Atlética")
-        print(" 0 - Retornar")
-        opcao = int(input(" Escolha a opção: "))
-        print("\n")
-        return opcao
+        sg.ChangeLookAndFeel('DarkTeal4')
+        layout = [
+            [sg.Text('-------- ATLÉTICA ----------', font=("Helvica", 25))],
+            [sg.Button('Incluir Atlética',key='1')],
+            [sg.Button('Excluir Atlética',key='2')],
+            [sg.Button('Incluir aluno em Atlética',key='3')],
+            [sg.Button('Excluir aluno de uma Atlética', key='4')],
+            [sg.Button('Listar alunos de uma Atlética', key='5')],
+            [sg.Button('Retornar', key='0')]
+        ]
+        self.__window = sg.Window('Sistema de atlética').Layout(layout)
+        button, values = self.open()
+        self.close()
+        return int(button)
+
 
     def pegar_dados_atletica(self):
         sg.ChangeLookAndFeel('DarkTeal4')
@@ -29,11 +33,9 @@ class TelaAtletica():
         [sg.Button('Confirmar'), sg.Cancel('Cancelar')]
         ]
         self.__window = sg.Window('Sistema de atlética').Layout(layout)
-
         button, values = self.open()
         curso = values['curso']
         nome = values['nome']
-
         self.close()
         return {"curso": curso, "nome": nome}
 
@@ -44,19 +46,22 @@ class TelaAtletica():
         button, values = self.__window.Read()
         return button, values
 
-    def mostrar_dados_atletica(self, dados):
-        print(" -------- DADOS ATLÉTICA ----------")
-        print(" Nome da Atlética: ", dados["nome"])
-        print(" Nome do Curso: ", dados["curso"])
-        print(" Participantes: ", end="")
-        print("Nome: ",end="")
-        for elemento in dados["alunos"]:
-            print(elemento.nome, end=", ")
-        print("\n")
+    def mostrar_atleticas(self,atleticas):
+        print('Ver teste.py')
 
-    def seleciona_atletica(self):
-        curso = input("Nome do curso da atlética: ")
-        return curso
+    # def mostrar_dados_atletica(self, dados):
+    #     print(" -------- DADOS ATLÉTICA ----------")
+    #     print(" Nome da Atlética: ", dados["nome"])
+    #     print(" Nome do Curso: ", dados["curso"])
+    #     print(" Participantes: ", end="")
+    #     print("Nome: ",end="")
+    #     for elemento in dados["alunos"]:
+    #         print(elemento.nome, end=", ")
+    #     print("\n")
+
+    # def seleciona_atletica(self):
+    #     curso = input("Nome do curso da atlética: ")
+    #     return curso
 
     def mostra_mensagem(self, msg):
         print(msg)

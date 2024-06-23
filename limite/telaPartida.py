@@ -1,7 +1,12 @@
-
+import PySimpleGUI as sg
 
 
 class TelaPartida():
+    def __init__(self, controlador_partida):
+        self.__controlador_partida = controlador_partida
+        self.__window = None
+
+
     def tela_opcoes(self):
         print(" -------- PARTIDA ----------")
         print(" Escolha a opcao")
@@ -42,3 +47,10 @@ class TelaPartida():
 
     def mostra_mensagem(self, msg):
         print(msg)
+
+    def close(self):
+        self.__window.Close()
+
+    def open(self):
+        button, values = self.__window.Read()
+        return button, values

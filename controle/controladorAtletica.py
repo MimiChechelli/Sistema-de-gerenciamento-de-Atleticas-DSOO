@@ -1,5 +1,5 @@
 from entidade.atletica import Atletica
-from limite.telaatletica import TelaAtletica
+from limite.telaAtletica import TelaAtletica
 from limite.telaAluno import TelaAluno
 
 

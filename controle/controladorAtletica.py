@@ -13,9 +13,7 @@ class ControladorAtletica():
 
     def lista_atletica(self):
         for a in self.__atleticas:
-            self.__tela_atletica.mostrar_dados_atletica({"nome": a.nome,
-                                                        "curso": a.curso,
-                                                        "alunos": a.alunos})
+            self.__tela_atletica.mostrar_dados_atletica(self.__atleticas)
 
     def pega_atletica_pelo_curso(self, curso):
         for atletica in self.__atleticas:

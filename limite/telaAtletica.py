@@ -64,5 +64,9 @@ class TelaAtletica():
     #     return curso
 
     def mostra_mensagem(self, msg):
-        print(msg)
+        sg.ChangeLookAndFeel('DarkTeal4')
+        layout = [[sg.Text(f'{msg}', font=("Helvica", 25))]]
+        self.__window = sg.Window('Sistema de atlética').Layout(layout)
+        button, values = self.open()
+        self.close()
 

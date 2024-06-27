@@ -1,5 +1,5 @@
 from entidade.campeonato import Campeonato
-from limite.telacampeonato import TelaCampeonato
+from limite.telaCampeonato import TelaCampeonato
 
 class ControladorCampeonato():
     def __init__(self, controlador_sistema):

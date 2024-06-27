@@ -1,7 +1,6 @@
 from entidade.arbitro import Arbitro
 from limite.telaArbitro import TelaArbitro
 
-
 class ControladorArbitro():
     def __init__(self, controlador_sistema):
         self.__controlador_sistema = controlador_sistema

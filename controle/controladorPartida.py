@@ -1,5 +1,5 @@
 from entidade.partida import Partida
-from limite.telapartida import TelaPartida
+from limite.telaPartida import TelaPartida
 from entidade.atletica import Atletica
 from entidade.arbitro import Arbitro
 

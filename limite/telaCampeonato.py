@@ -6,20 +6,22 @@ class TelaCampeonato():
         self.__controlador_campeonato= controlador_campeonato
         self.__window = None
 
-
     def tela_opcoes(self):
-        print(" -------- CAMPEONATO ----------")
-        print(" Escolha a opcao")
-        print(" 1 - Incluir campeonato")
-        print(" 2 - Excluir campeonato")
-        print(" 3 - Incluir partida")
-        print(" 4 - Excluir partida")
-        print(" 5 - Listar partidas")
-        print(" 6 - Ver podio")
-        print(" 0 - Retornar")
-        opcao = int(input(" Escolha a opção: "))
-        print("\n")
-        return opcao
+        sg.ChangeLookAndFeel('DarkTeal4')
+        layout = [
+            [sg.Text('-------- CAMPEONATO ----------', font=("Helvica", 25))],
+            [sg.Button('Incluir campeonato',key='1')],
+            [sg.Button('Excluir campeonato',key='2')],
+            [sg.Button('Incluir partida',key='3')],
+            [sg.Button('Excluir partida',key='4')],
+            [sg.Button('Listar partidas', key='5')],
+            [sg.Button('Ver podio', key='6')],
+            [sg.Button('Retornar', key='0')]
+        ]
+        self.__window = sg.Window('Sistema de atlética').Layout(layout)
+        button, values = self.open()
+        self.close()
+        return int(button)
 
     def pegar_dados_campeonato(self):
         print(" -------- DADOS CAMPEONATO ----------")

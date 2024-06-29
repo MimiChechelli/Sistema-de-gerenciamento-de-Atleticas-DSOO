@@ -8,16 +8,19 @@ class TelaPartida():
 
 
     def tela_opcoes(self):
-        print(" -------- PARTIDA ----------")
-        print(" Escolha a opcao")
-        print(" 1 - Incluir partida")
-        print(" 2 - Alterar partida")
-        print(" 3 - Excluir partida")
-        print(" 4 - Listar partidas")
-        print(" 0 - Retornar")
-        opcao = int(input(" Escolha a opção: "))
-        print("\n")
-        return opcao
+        sg.ChangeLookAndFeel('DarkTeal4')
+        layout = [
+            [sg.Text('-------- PARTIDA ----------', font=("Helvica", 25))],
+            [sg.Button('Incluir partida',key='1')],
+            [sg.Button('Alterar partida',key='2')],
+            [sg.Button('Excluir partida',key='3')],
+            [sg.Button('Listar partidas',key='4')],
+            [sg.Button('Retornar', key='0')]
+        ]
+        self.__window = sg.Window('Sistema de atlética').Layout(layout)
+        button, values = self.open()
+        self.close()
+        return int(button)
 
     def pegar_codigo_partida(self):
         codigo = int(input(" Insira o código da partida: "))

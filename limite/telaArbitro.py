@@ -1,20 +1,24 @@
 from datetime import date, datetime
-
+import PySimpleGUI as sg
 
 class TelaArbitro():
     def __init__(self):
-        pass
+        self.__window = None
 
     def tela_opcoes(self):
-        print("--- ESCOLHA A OPÇÃO DESEJADA ---")
-        print("1 - Cadastrar arbitro")
-        print("2 - Excluir arbitro")
-        print("3 - Alterar arbitro")
-        print("4 - Listar arbitros")
-        print("0 - Retornar ao menu")
-        opcao = int(input("Escolha a opcao: "))
-        print("\n")
-        return opcao
+        sg.ChangeLookAndFeel('DarkTeal4')
+        layout = [
+            [sg.Text('-------- ARBITRO ----------', font=("Helvica", 25))],
+            [sg.Button('Cadastrar arbitro',key='1')],
+            [sg.Button('Excluir arbitro',key='2')],
+            [sg.Button('Alterar arbitro',key='3')],
+            [sg.Button('Listar arbitro', key='4')],
+            [sg.Button('Retornar', key='0')]
+        ]
+        self.__window = sg.Window('Sistema de atlética').Layout(layout)
+        button, values = self.open()
+        self.close()
+        return int(button)
 
     def pegar_dados_arbitro(self):
         print("*** DADOS DO ARBITRO ***")

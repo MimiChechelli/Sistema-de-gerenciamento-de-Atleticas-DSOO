@@ -1,21 +1,25 @@
 from datetime import datetime, date
 from entidade.atletica import Atletica
-
+import PySimpleGUI as sg
 
 class TelaAluno():
     def __init__(self):
-        pass
+        self.__window = None
 
     def tela_opcoes(self):
-        print("--- ESCOLHA A OPÇÃO DESEJADA ---")
-        print("1 - Cadastrar aluno")
-        print("2 - Excluir aluno")
-        print("3 - Alterar aluno")
-        print("4 - Listar alunos")
-        print("0 - Retornar ao menu")
-        opcao = int(input("Escolha a opcao: "))
-        print("\n")
-        return opcao
+        sg.ChangeLookAndFeel('DarkTeal4')
+        layout = [
+            [sg.Text('-------- ALUNOS ----------', font=("Helvica", 25))],
+            [sg.Button('Cadastrar alunos',key='1')],
+            [sg.Button('Excluir aluno',key='2')],
+            [sg.Button('Alterar aluno',key='3')],
+            [sg.Button('Listar alunos', key='4')],
+            [sg.Button('Retornar', key='0')]
+        ]
+        self.__window = sg.Window('Sistema de atlética').Layout(layout)
+        button, values = self.open()
+        self.close()
+        return int(button)
 
     def pegar_dados_aluno(self):
         print("*** DADOS DO ALUNO ***")

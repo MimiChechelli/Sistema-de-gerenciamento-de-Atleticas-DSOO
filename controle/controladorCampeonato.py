@@ -4,7 +4,7 @@ from limite.telaCampeonato import TelaCampeonato
 class ControladorCampeonato():
     def __init__(self, controlador_sistema):
         self.__controlador_sistema = controlador_sistema
-        self.__tela_campeonato = TelaCampeonato()
+        self.__tela_campeonato = TelaCampeonato(self)
         self.__campeonatos = []
 
 

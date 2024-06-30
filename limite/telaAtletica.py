@@ -46,22 +46,23 @@ class TelaAtletica():
         button, values = self.__window.Read()
         return button, values
 
-    def mostrar_atleticas(self,atleticas):
-        print('Ver teste.py')
-
-    # def mostrar_dados_atletica(self, dados):
-    #     print(" -------- DADOS ATLÉTICA ----------")
-    #     print(" Nome da Atlética: ", dados["nome"])
-    #     print(" Nome do Curso: ", dados["curso"])
-    #     print(" Participantes: ", end="")
-    #     print("Nome: ",end="")
-    #     for elemento in dados["alunos"]:
-    #         print(elemento.nome, end=", ")
-    #     print("\n")
-
-    # def seleciona_atletica(self):
-    #     curso = input("Nome do curso da atlética: ")
-    #     return curso
+    def mostrar_atleticas(self,lista_atleticas):
+        cursos = sorted(set(atletica.curso for atletica in lista_atleticas))
+        layout_curso = [
+            [sg.Text('Selecione o Curso')],
+            [sg.Listbox(values=cursos, size=(30, 6), key='curso_selecionado')],
+            [sg.Button('Selecionar Curso')]
+        ]
+        window = sg.Window('Seleção de Curso').Layout(layout_curso)
+        evento, valores = window.read()
+        if evento == sg.WIN_CLOSED:
+            window.close()
+            return None
+        curso_selecionado = valores['curso_selecionado'][0] if valores['curso_selecionado'] else None
+        window.close()
+        if not curso_selecionado:
+            return None
+        return curso_selecionado
 
     def mostra_mensagem(self, msg):
         sg.ChangeLookAndFeel('DarkTeal4')

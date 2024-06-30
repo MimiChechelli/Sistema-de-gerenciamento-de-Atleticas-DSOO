@@ -48,8 +48,30 @@ class TelaPartida():
         print(" Resultado: ", dados["resultado_atl_1"], " a ",dados["resultado_atl_2"])
         print("\n")
 
+    # def mostrar_alunos(self,lista_alunos):
+    #     cursos = sorted(set(aluno.cpf for aluno in lista_alunos))
+    #     layout_curso = [
+    #         [sg.Text('Selecione o CPF do aluno')],
+    #         [sg.Listbox(values=cursos, size=(30, 6), key='aluno_selecionado')],
+    #         [sg.Button('Selecionar aluno')]
+    #     ]
+    #     window = sg.Window('Seleção de Aluno').Layout(layout_curso)
+    #     evento, valores = window.read()
+    #     if evento == sg.WIN_CLOSED:
+    #         window.close()
+    #         return None
+    #     aluno_selecionado = valores['aluno_selecionado'][0] if valores['aluno_selecionado'] else None
+    #     window.close()
+    #     if not aluno_selecionado:
+    #         return None
+    #     return aluno_selecionado
+
     def mostra_mensagem(self, msg):
-        print(msg)
+        sg.ChangeLookAndFeel('DarkTeal4')
+        layout = [[sg.Text(f'{msg}', font=("Helvica", 25))]]
+        self.__window = sg.Window('Sistema de atlética').Layout(layout)
+        button, values = self.open()
+        self.close()
 
     def close(self):
         self.__window.Close()

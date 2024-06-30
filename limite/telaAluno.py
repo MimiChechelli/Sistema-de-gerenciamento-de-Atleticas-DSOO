@@ -38,25 +38,14 @@ class TelaAluno():
         self.close()
         return {"cpf": cpf, "nome": nome, "data_nascimento": data_nascimento}
 
-    # def mostrar_dados_aluno(self, dados_aluno):
-    #     print("Nome: ", dados_aluno["nome"])
-    #     print("Cpf ", dados_aluno["cpf"])
-    #     print("Data de nascimento ", dados_aluno["data_nascimento"])
-    #     print("Gols", dados_aluno["gols"])
-    #     print("\n")
-
-    # def pegar_dados_por_cpf(self):
-    #     cpf = int(input("Digite o CPF do aluno que deseja selecionar: "))
-    #     return cpf
-
     def mostrar_alunos(self,lista_alunos):
-        cursos = sorted(set(aluno.cpf for aluno in lista_alunos))
-        layout_curso = [
+        cpf = sorted(set(aluno.cpf for aluno in lista_alunos))
+        layout = [
             [sg.Text('Selecione o CPF do aluno')],
-            [sg.Listbox(values=cursos, size=(30, 6), key='aluno_selecionado')],
+            [sg.Listbox(values=cpf, size=(30, 6), key='aluno_selecionado')],
             [sg.Button('Selecionar aluno')]
         ]
-        window = sg.Window('Seleção de Aluno').Layout(layout_curso)
+        window = sg.Window('Seleção de Aluno').Layout(layout)
         evento, valores = window.read()
         if evento == sg.WIN_CLOSED:
             window.close()
@@ -73,3 +62,15 @@ class TelaAluno():
         self.__window = sg.Window('Sistema de atlética').Layout(layout)
         button, values = self.open()
         self.close()
+
+    # Códigos anteriores:
+    # def mostrar_dados_aluno(self, dados_aluno):
+    #     print("Nome: ", dados_aluno["nome"])
+    #     print("Cpf ", dados_aluno["cpf"])
+    #     print("Data de nascimento ", dados_aluno["data_nascimento"])
+    #     print("Gols", dados_aluno["gols"])
+    #     print("\n")
+
+    # def pegar_dados_por_cpf(self):
+    #     cpf = int(input("Digite o CPF do aluno que deseja selecionar: "))
+    #     return cpf

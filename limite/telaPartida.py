@@ -22,49 +22,88 @@ class TelaPartida():
         self.close()
         return int(button)
 
-    def pegar_codigo_partida(self):
-        codigo = int(input(" Insira o código da partida: "))
-        print("\n")
-        return codigo
+    # def pegar_codigo_partida(self):
+    #     codigo = int(input(" Insira o código da partida: "))
+    #     print("\n")
+    #     return codigo
 
-    def pegar_dados_partida(self):
-        print(" -------- DADOS PARTIDA ----------")
-        codigo = int(input(" Insira o código da partida: "))
-        data_partida = input(" Data da partida: ")
-        atletica_1 = input(" Insira a primeira atlética: ")
-        atletica_2 = input(" Insira a segunda atlética: ")
-        arbitro = input(" Insira o arbitro da partida: ")
-        resultado_atl_1 = int(input(" Insira a pontuação da primeira atlética: "))
-        resultado_atl_2 = int(input(" Insira a pontuação da segunda atlética: "))
-        print("\n")
-        return codigo, data_partida, atletica_1, atletica_2, arbitro, resultado_atl_1, resultado_atl_2
+    def pegar_dados_partida(self, lista_atleticas, lista_arbitros):
+        sg.ChangeLookAndFeel('DarkTeal4')
+        layout = [
+            [sg.Text('-------- DADOS PARTIDA ---------', font=("Helvica", 25))],
+            [sg.Text('Insira o código da partida: ', size=(15, 1)), sg.InputText('', key='codigo')],
+            [sg.Text('Data da partida: ', size=(15, 1)), sg.InputText('', key='data_partida')],
+            [sg.Text('Selecione a primeira atlética: ')],
+            [sg.Listbox(values=lista_atleticas, size=(30, 6), key='atletica_1')],
+            [sg.Text('Selecione a segunda atlética: ')],
+            [sg.Listbox(values=lista_atleticas, size=(30, 6), key='atletica_2')],
+            [sg.Text('Selecione o arbitro da partida: ')],
+            [sg.Listbox(values=lista_arbitros, size=(30, 6), key='arbitro')],
+            [sg.Text('Insira a pontuação da primeira atlética: ', size=(15, 1)), sg.InputText('', key='resultado_atl_1')],
+            [sg.Text('Insira a pontuação da segunda atlética: ', size=(15, 1)), sg.InputText('', key='resultado_atl_1')],
+        ]
+        self.__window = sg.Window('Sistema de atlética').Layout(layout)
+        button, values = self.open()
+        codigo = values['codigo']
+        data_partida = values['data_partida']
+        atletica_1 = values['atletica_1']
+        atletica_2 = values['atletica_2']
+        arbitro = values['arbitro']
+        resultado_atl_1 = values['resultado_atl_1']
+        resultado_atl_2 = values['resultado_atl_2']
+        self.close()
+        return {"codigo": codigo, 
+                "data_partida": data_partida, 
+                "atletica_1": atletica_1,
+                "atletica_2": atletica_2, 
+                "arbitro": arbitro, 
+                "resultado_atl_1": resultado_atl_1,
+                "resultado_atl_2": resultado_atl_2}
 
-    def mostrar_dados_partida(self, dados):
-        print(" -------- DADOS PARTIDA ----------")
-        print(" Código: ", dados["codigo"])
-        print(" Data: ", dados["data_partida"])
-        print(" Atlética: ", dados["atletica_1"]," VS ", dados["atletica_2"])
-        print(" Arbitro: ", dados["arbitro"])
-        print(" Resultado: ", dados["resultado_atl_1"], " a ",dados["resultado_atl_2"])
-        print("\n")
+    # def mostrar_dados_partida(self, dados):
+    #     print(" -------- DADOS PARTIDA ----------")
+    #     print(" Código: ", dados["codigo"])
+    #     print(" Data: ", dados["data_partida"])
+    #     print(" Atlética: ", dados["atletica_1"]," VS ", dados["atletica_2"])
+    #     print(" Arbitro: ", dados["arbitro"])
+    #     print(" Resultado: ", dados["resultado_atl_1"], " a ",dados["resultado_atl_2"])
+    #     print("\n")
 
-    # def mostrar_alunos(self,lista_alunos):
-    #     cursos = sorted(set(aluno.cpf for aluno in lista_alunos))
-    #     layout_curso = [
-    #         [sg.Text('Selecione o CPF do aluno')],
-    #         [sg.Listbox(values=cursos, size=(30, 6), key='aluno_selecionado')],
-    #         [sg.Button('Selecionar aluno')]
-    #     ]
-    #     window = sg.Window('Seleção de Aluno').Layout(layout_curso)
-    #     evento, valores = window.read()
-    #     if evento == sg.WIN_CLOSED:
-    #         window.close()
-    #         return None
-    #     aluno_selecionado = valores['aluno_selecionado'][0] if valores['aluno_selecionado'] else None
-    #     window.close()
-    #     if not aluno_selecionado:
-    #         return None
-    #     return aluno_selecionado
+    def listar_todas_partidas(self,lista_partida):
+        cursos = sorted(set(aluno.cpf for aluno in lista_partida))
+        layout_curso = [
+            [sg.Text('Selecione o CPF do aluno')],
+            [sg.Listbox(values=cursos, size=(30, 6), key='aluno_selecionado')],
+            [sg.Button('Selecionar aluno')]
+        ]
+        window = sg.Window('Seleção de Aluno').Layout(layout_curso)
+        evento, valores = window.read()
+        if evento == sg.WIN_CLOSED:
+            window.close()
+            return None
+        aluno_selecionado = valores['aluno_selecionado'][0] if valores['aluno_selecionado'] else None
+        window.close()
+        if not aluno_selecionado:
+            return None
+        return aluno_selecionado
+
+    def mostrar_partida(self,lista_alunos):
+        cursos = sorted(set(aluno.cpf for aluno in lista_alunos))
+        layout_curso = [
+            [sg.Text('Selecione o CPF do aluno')],
+            [sg.Listbox(values=cursos, size=(30, 6), key='aluno_selecionado')],
+            [sg.Button('Selecionar aluno')]
+        ]
+        window = sg.Window('Seleção de Aluno').Layout(layout_curso)
+        evento, valores = window.read()
+        if evento == sg.WIN_CLOSED:
+            window.close()
+            return None
+        aluno_selecionado = valores['aluno_selecionado'][0] if valores['aluno_selecionado'] else None
+        window.close()
+        if not aluno_selecionado:
+            return None
+        return aluno_selecionado
 
     def mostra_mensagem(self, msg):
         sg.ChangeLookAndFeel('DarkTeal4')

@@ -23,55 +23,60 @@ class TelaCampeonato():
         self.close()
         return int(button)
 
-    def pegar_dados_campeonato(self):
-        print(" -------- DADOS CAMPEONATO ----------")
-        edicao = int(input(" Edição do campeonato: "))
-        print("\n")
-        return edicao
+    def mostrar_campeonatos(self, lista_campeonatos):
+        edicao = sorted(set(campeonato.edicao for campeonato in lista_campeonatos))
+        layout_curso = [
+            [sg.Text('Selecione a edição do campeonato desejado: ')],
+            [sg.Listbox(values=edicao, size=(30, 6), key='campeonato_selecionado')],
+            [sg.Button('Selecionar campeonato')]
+        ]
+        window = sg.Window('Seleção de campeonato').Layout(layout_curso)
+        evento, valores = window.read()
+        if evento == sg.WIN_CLOSED:
+            window.close()
+            return None
+        campeonato_selecionado = valores['campeonato_selecionado'][0] if valores['campeonato_selecionado'] else None
+        window.close()
+        if not campeonato_selecionado:
+            return None
+        return campeonato_selecionado
 
-    def lista_edicoes(self, campeonatos):
-        for campeonato in campeonatos:
-            print(campeonato.edicao)
+    # def pegar_dados_campeonato(self):
+    #     print(" -------- DADOS CAMPEONATO ----------")
+    #     edicao = int(input(" Edição do campeonato: "))
+    #     print("\n")
+    #     return edicao
 
+    # def lista_edicoes(self, campeonatos):
+    #     for campeonato in campeonatos:
+    #         print(campeonato.edicao)
 
-    def pega_edicao(self):
-        edicao = int(input("Qual Edição? "))
-        print("\n")
-        return edicao
+    # def pega_edicao(self):
+    #     edicao = int(input("Qual Edição? "))
+    #     print("\n")
+    #     return edicao
 
-    # def mostrar_alunos(self,lista_alunos):
-    #     cursos = sorted(set(aluno.cpf for aluno in lista_alunos))
-    #     layout_curso = [
-    #         [sg.Text('Selecione o CPF do aluno')],
-    #         [sg.Listbox(values=cursos, size=(30, 6), key='aluno_selecionado')],
-    #         [sg.Button('Selecionar aluno')]
-    #     ]
-    #     window = sg.Window('Seleção de Aluno').Layout(layout_curso)
-    #     evento, valores = window.read()
-    #     if evento == sg.WIN_CLOSED:
-    #         window.close()
-    #         return None
-    #     aluno_selecionado = valores['aluno_selecionado'][0] if valores['aluno_selecionado'] else None
-    #     window.close()
-    #     if not aluno_selecionado:
-    #         return None
-    #     return aluno_selecionado
-
-    def mostrar_dados_campeonato(self, dados):
-        print(" -------- DADOS CAMPEONATO ----------")
-        print(" Código: ", dados["codigo"])
-        print(" Edição do campeonato: ", dados["edicao"])
-        print(" Pontuações: ", end="")
-        for atletica, pontuacao in dados["pontuacao"]:
-            print(f"Atlética: {atletica}, pontuação: {pontuacao}", end=", ")
-        print(" Partidas: ", end="")
-        for elemento in dados["partidas"]:
-            print(elemento, end=", ")
-        print("\n")
+    # def mostrar_dados_campeonato(self, dados):
+    #     print(" -------- DADOS CAMPEONATO ----------")
+    #     print(" Código: ", dados["codigo"])
+    #     print(" Edição do campeonato: ", dados["edicao"])
+    #     print(" Pontuações: ", end="")
+    #     for atletica, pontuacao in dados["pontuacao"]:
+    #         print(f"Atlética: {atletica}, pontuação: {pontuacao}", end=", ")
+    #     print(" Partidas: ", end="")
+    #     for elemento in dados["partidas"]:
+    #         print(elemento, end=", ")
+    #     print("\n")
 
     def mostrar_ranking_campeonato(self, podio: list):
-        print("Primeiro:", podio[0], "Segundo:", podio[1], "e Terceiro:", podio[2])
-        print("\n")
+        sg.ChangeLookAndFeel('DarkTeal4')
+        layout = [[sg.Text(f'-------- Podio ----------', font=("Helvica", 25))],
+                    [sg.Text(f'Primeiro lugar: {podio[0]}', font=("Helvica", 25))],
+                    [sg.Text(f'Segundo lugar: {podio[1]}', font=("Helvica", 25))],
+                    [sg.Text(f'Terceiro lugar: {podio[2]}', font=("Helvica", 25))]]
+        self.__window = sg.Window('Sistema de atlética').Layout(layout)
+        button, values = self.open()
+        self.close()
 
     def mostra_mensagem(self, msg):
         sg.ChangeLookAndFeel('DarkTeal4')

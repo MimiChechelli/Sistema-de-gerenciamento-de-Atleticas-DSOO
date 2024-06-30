@@ -21,50 +21,58 @@ class TelaArbitro():
         return int(button)
 
     def pegar_dados_arbitro(self):
-        print("*** DADOS DO ARBITRO ***")
-        nome = input("Nome: ")
-        cpf = int(input("CPF (somente números): "))
-        data_nascimento = input("Data de nascimento (YYYY,MM,DD): ")
-        data_nascimento = datetime.strptime(data_nascimento, "%Y-%m-%d").date()
-        numero_partidas = int(input("Quantidade de partidas: "))
-        if isinstance(nome, str) and isinstance(cpf, int) and isinstance(numero_partidas, int) and isinstance(data_nascimento, date):
-            print("\n")
-            return {"nome": nome, "cpf": cpf, "data_nascimento": data_nascimento, "numero_partidas": numero_partidas}
+        sg.ChangeLookAndFeel('DarkTeal4')
+        layout = [
+        [sg.Text('-------- DADOS DO ARBITRO ----------', font=("Helvica", 25))],
+        [sg.Text('Nome do arbitro:', size=(15, 1)), sg.InputText('', key='nome')],
+        [sg.Text('CPF do arbitro:', size=(15, 1)), sg.InputText('', key='cpf')],
+        [sg.Text('Insira a data de nascimento:', size=(15, 1)), sg.InputText('AAAA-MM-DD', key='data_nascimento')],
+        [sg.Button('Confirmar'), sg.Cancel('Cancelar')]
+        ]
+        self.__window = sg.Window('Sistema de atlética').Layout(layout)
+        button, values = self.open()
+        cpf = values['cpf']
+        nome = values['nome']
+        data_nascimento = values['data_nascimento']
+        self.close()
+        if isinstance(nome, str) and isinstance(cpf, int) and isinstance(data_nascimento, date):
+            return {"nome": nome, "cpf": cpf, "data_nascimento": data_nascimento, "numero_partidas": 0}
         print("Algum dos dados foi inserido de forma errada, favor repetir")
         print("\n")
 
-    def mostrar_dados_arbitro(self, dados_arbitro):
-        print("Nome: ", dados_arbitro["nome"])
-        print("Cpf: ", dados_arbitro["cpf"])
-        print("Data nascimento: ", dados_arbitro["data_nascimento"])
-        print("Numero partidas: ", dados_arbitro["numero_partidas"])
-        print("\n")
+    # Códigos anteriores:
+    # def mostrar_dados_arbitro(self, dados_arbitro):
+    #     print("Nome: ", dados_arbitro["nome"])
+    #     print("Cpf: ", dados_arbitro["cpf"])
+    #     print("Data nascimento: ", dados_arbitro["data_nascimento"])
+    #     print("Numero partidas: ", dados_arbitro["numero_partidas"])
+    #     print("\n")
 
-    def pegar_dados_por_cpf(self):
-        cpf = int(input("Digite o CPF do arbitro que deseja selecionar: "))
-        if isinstance(cpf, int):
-            return cpf
-        else:
-            print("Não foi possível encontrar esse CPF")
-            print("\n")
+    # def pegar_dados_por_cpf(self):
+    #     cpf = int(input("Digite o CPF do arbitro que deseja selecionar: "))
+    #     if isinstance(cpf, int):
+    #         return cpf
+    #     else:
+    #         print("Não foi possível encontrar esse CPF")
+    #         print("\n")
 
-    # def mostrar_alunos(self,lista_alunos):
-    #     cursos = sorted(set(aluno.cpf for aluno in lista_alunos))
-    #     layout_curso = [
-    #         [sg.Text('Selecione o CPF do aluno')],
-    #         [sg.Listbox(values=cursos, size=(30, 6), key='aluno_selecionado')],
-    #         [sg.Button('Selecionar aluno')]
-    #     ]
-    #     window = sg.Window('Seleção de Aluno').Layout(layout_curso)
-    #     evento, valores = window.read()
-    #     if evento == sg.WIN_CLOSED:
-    #         window.close()
-    #         return None
-    #     aluno_selecionado = valores['aluno_selecionado'][0] if valores['aluno_selecionado'] else None
-    #     window.close()
-    #     if not aluno_selecionado:
-    #         return None
-    #     return aluno_selecionado
+    def mostrar_arbitro(self, lista_arbitros):
+        cpf = sorted(set(arbitro.cpf for arbitro in lista_arbitros))
+        layout = [
+            [sg.Text('Selecione o CPF do arbitro')],
+            [sg.Listbox(values=cpf, size=(30, 6), key='arbitro_selecionado')],
+            [sg.Button('Selecionar arbitro')]
+        ]
+        window = sg.Window('Seleção de arbitro').Layout(layout)
+        evento, valores = window.read()
+        if evento == sg.WIN_CLOSED:
+            window.close()
+            return None
+        arbitro_selecionado = valores['arbitro_selecionado'][0] if valores['arbitro_selecionado'] else None
+        window.close()
+        if not arbitro_selecionado:
+            return None
+        return arbitro_selecionado
 
     def mostra_mensagem(self, msg):
         sg.ChangeLookAndFeel('DarkTeal4')

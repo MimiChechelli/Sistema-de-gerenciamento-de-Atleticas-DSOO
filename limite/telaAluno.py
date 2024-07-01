@@ -21,6 +21,13 @@ class TelaAluno():
         self.close()
         return int(button)
 
+    def close(self):
+        self.__window.Close()
+
+    def open(self):
+        button, values = self.__window.Read()
+        return button, values
+
     def pegar_dados_aluno(self):
         sg.ChangeLookAndFeel('DarkTeal4')
         layout = [
@@ -47,6 +54,7 @@ class TelaAluno():
         ]
         window = sg.Window('Seleção de Aluno').Layout(layout)
         evento, valores = window.read()
+        print(valores)
         if evento == sg.WIN_CLOSED:
             window.close()
             return None

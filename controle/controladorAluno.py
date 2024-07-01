@@ -8,40 +8,34 @@ class ControladorAluno():
         self.__tela_aluno = TelaAluno()
         self.__lista_alunos = []
 
-    def pega_aluno_por_cpf(self):
-        cpf = self.__tela_aluno.pegar_dados_por_cpf()
-        for aluno in self.__lista_alunos:
-            if (aluno is not None) and aluno.cpf == cpf:
-                return aluno
-        else:
-            self.__tela_aluno.mostrar_mensagem("Aluno não encontrado")
 
     def adiciona_aluno(self):
+        # selecionar o aluno
         dados_aluno = self.__tela_aluno.pegar_dados_aluno()
         novo_aluno = Aluno(
             dados_aluno["nome"],
             dados_aluno["cpf"],
-            dados_aluno["data_nascimento"],
-            dados_aluno["gols"])
+            dados_aluno["data_nascimento"])
         self.__lista_alunos.append(novo_aluno)
+        self.__tela_aluno.mostra_mensagem("Aluno adicionado")
 
     def exclui_aluno(self):
-        cpf = self.__tela_aluno.pegar_dados_por_cpf()
+        cpf = self.__tela_aluno.mostrar_alunos(self.__lista_alunos)
         for aluno in self.__lista_alunos:
             if aluno.cpf == cpf:
-                print("Aluno excluido")
+                self.__tela_aluno.mostra_mensagem("Aluno excluido")
                 return self.__lista_alunos.remove(aluno)
         self.__tela_aluno.mostrar_mensagem("Usuário não encontrado")
 
     def alterar_aluno(self):
-        aluno = self.pega_aluno_por_cpf()
+        cpf = self.__tela_aluno.mostrar_alunos(self.__lista_alunos)
 
-        if aluno is not None:
+        if cpf is not None:
             novos_dados = self.__tela_aluno.pegar_dados_aluno()
-            aluno.nome = novos_dados["nome"]
-            aluno.cpf = novos_dados["cpf"]
-            aluno.data_nascimento = novos_dados["data_nascimento"]
-            aluno.gols = novos_dados["gols"]
+            cpf.nome = novos_dados["nome"]
+            cpf.cpf = novos_dados["cpf"]
+            cpf.data_nascimento = novos_dados["data_nascimento"]
+            cpf.gols = novos_dados["gols"]
         else:
             self.__tela_aluno.mostrar_mensagem("Aluno não existente")
 

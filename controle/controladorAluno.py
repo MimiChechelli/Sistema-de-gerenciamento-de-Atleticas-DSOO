@@ -1,12 +1,13 @@
 from entidade.aluno import Aluno
 from limite.telaAluno import TelaAluno
+from dao.alunoDao import AlunoDAO
 
 
 class ControladorAluno():
     def __init__(self, controlador_sistema):
         self.__controlador_sistema = controlador_sistema
         self.__tela_aluno = TelaAluno()
-        self.__lista_alunos = []
+        self.__aluno_dao = AlunoDAO()
 
 
     def adiciona_aluno(self):
@@ -40,7 +41,8 @@ class ControladorAluno():
             self.__tela_aluno.mostrar_mensagem("Aluno não existente")
 
     def listar_aluno(self):
-        for aluno in self.__lista_alunos:
+        lista_alunos = self.__aluno_dao.get_all()
+        for aluno in lista_alunos:
             self.__tela_aluno.mostrar_dados_aluno({
                 "nome": aluno.nome,
                 "cpf": aluno.cpf,
@@ -53,7 +55,7 @@ class ControladorAluno():
     def retornar(self):
         self.__controlador_sistema.abre_tela()
 
-    def abre_tela(self):
+    def abre_tela(self):  # Alterar tela
         lista_opcoes = {1: self.adiciona_aluno, 2: self.exclui_aluno,
                         3: self.alterar_aluno, 4: self.listar_aluno,
                         0: self.retornar}

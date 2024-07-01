@@ -1,6 +1,7 @@
 import pickle
 from abc import ABC
 
+
 class DAO(ABC):
     def __init__(self, datasource=''):
         self.__datasource = datasource
@@ -26,7 +27,7 @@ class DAO(ABC):
             self.__dump()
         except KeyError:
             pass
-    
+
     def get(self, key):
         try:
             return self.__cache[key]
@@ -35,5 +36,3 @@ class DAO(ABC):
 
     def get_all(self):
         return self.__cache.values()
-    
-    

@@ -17,19 +17,19 @@ class ControladorAluno():
             dados_aluno["nome"],
             dados_aluno["cpf"],
             dados_aluno["data_nascimento"])
-        self.__lista_alunos.append(novo_aluno)
+        self.__aluno_dao.add(novo_aluno)
         self.__tela_aluno.mostra_mensagem("Aluno adicionado")
 
     def exclui_aluno(self):
-        cpf = self.__tela_aluno.mostrar_alunos(self.__lista_alunos)
-        for aluno in self.__lista_alunos:
+        cpf = self.__tela_aluno.mostrar_alunos(self.__aluno_dao.get_all())
+        for aluno in self.__aluno_dao.get_all():
             if aluno.cpf == cpf:
                 self.__tela_aluno.mostra_mensagem("Aluno excluido")
-                return self.__lista_alunos.remove(aluno)
+                return self.self.__aluno_dao.remove(aluno)
         self.__tela_aluno.mostrar_mensagem("Usuário não encontrado")
 
     def alterar_aluno(self):
-        cpf = self.__tela_aluno.mostrar_alunos(self.__lista_alunos)
+        cpf = self.__tela_aluno.mostrar_alunos(self.__aluno_dao)
 
         if cpf is not None:
             novos_dados = self.__tela_aluno.pegar_dados_aluno()

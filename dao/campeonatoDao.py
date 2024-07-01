@@ -1,4 +1,4 @@
-from campeonatoDao import DAO
+from dao.abstractDao import DAO
 from entidade.campeonato import Campeonato
 
 

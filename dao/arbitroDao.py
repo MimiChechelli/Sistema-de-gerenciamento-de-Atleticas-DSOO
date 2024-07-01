@@ -1,4 +1,4 @@
-from arbitroDao import DAO
+from dao.abstractDao import DAO
 from entidade.arbitro import Arbitro
 
 

@@ -1,4 +1,4 @@
-from partidaDao import DAO
+from dao.abstractDao import DAO
 from entidade.partida import Partida
 
 

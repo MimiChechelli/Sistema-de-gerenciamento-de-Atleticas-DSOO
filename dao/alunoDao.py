@@ -1,4 +1,4 @@
-from abstractDao import DAO
+from dao.abstractDao import DAO
 from entidade.aluno import Aluno
 
 
